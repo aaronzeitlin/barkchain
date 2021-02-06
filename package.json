@@ -1,0 +1,31 @@
+{
+  "name": "drizzle-box",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "Compile Contracts": "truffle compile",
+    "Migrate Contracts":"truffle migrate",
+    "Test Contracts": "truffle test",
+    "Test dApp": "cd app && npm test",
+    "Run Local Server": "cd app && npm run start",
+    "Build for Production": "acd app && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truffle-box/drizzle-box.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/truffle-box/drizzle-box/issues"
+  },
+  "homepage": "https://github.com/truffle-box/drizzle-box#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^2.4.0"
+  }
+}
