@@ -8,7 +8,6 @@ contract BarkChain {
         string breed;
         address human;
     }
-
     // Mapping: Humans take care of their dogs
     mapping(address => Dog) public humans;
 
