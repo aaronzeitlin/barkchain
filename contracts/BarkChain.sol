@@ -1,26 +1,30 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.21 <0.7.4;
+pragma solidity >=0.4.21 <=0.7.4;
 
 contract BarkChain {
-    // Events
-    event dogHonored(address honoredBy, uint256 amount); // Event
-
-    // Structs
+    // A (good) dog
     struct Dog {
         string dogName;
         string dogBreed;
-        string honoredDate;
-        address honoredBy;
+        address dogHuman;
+    }
+    // Event: A (good) dog has been honored!
+    event DogHonored(uint256 dogId, string dogName, string dogBreed);
+
+    // All dogs (are good dogs)
+    Dog[] public dogs;
+
+    // Function: Honor a (good) dog
+    function _honorDog(
+        string memory _dogName,
+        string memory _dogBreed,
+        address _dogHuman
+    ) private {
+        // Add new dog to dogs
+        dogs.push(Dog(_dogName, _dogBreed, _dogHuman));
     }
 
-    // Functions
-
-    // Honor a Dog
-    function honorDog() private {
-        // Emit 'Dog Honored'
-        emit dogHonored(msg.sender, msg.value);
+    function honorDog(string memory _dogName, string memory _dogBreed) public {
+        _honorDog(_dogName, _dogBreed, msg.sender);
     }
-
-    // View an honored Dog
-    function viewDog() public {}
 }
