@@ -2,28 +2,33 @@
 pragma solidity >=0.4.21 <=0.7.4;
 
 contract BarkChain {
-    // A (good) dog
+    // Struct: Dog
     struct Dog {
-        string dogName;
-        string dogBreed;
-        address dogHuman;
+        string name;
+        string breed;
+        address human;
     }
-    // Event: A (good) dog has been honored!
-    event DogHonored(uint256 dogId, string dogName, string dogBreed);
 
-    // All dogs (are good dogs)
+    // Mapping: Humans take care of their dogs
+    mapping(address => Dog) public humans;
+
+    // Events: A dog was honored
+    event DogHonored(string name, string breed, address human);
+
+    // Declare a dynamic array of all dogs
     Dog[] public dogs;
 
-    // Function: Honor a (good) dog
+    // Function: Add a new dog to the dogs array.
     function _honorDog(
         string memory _dogName,
         string memory _dogBreed,
         address _dogHuman
     ) private {
-        // Add new dog to dogs
         dogs.push(Dog(_dogName, _dogBreed, _dogHuman));
+        emit DogHonored(_dogName, _dogBreed, _dogHuman);
     }
 
+    // Function: Honor a dog
     function honorDog(string memory _dogName, string memory _dogBreed) public {
         _honorDog(_dogName, _dogBreed, msg.sender);
     }
