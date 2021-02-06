@@ -11,7 +11,7 @@ contract(BarkChain, (accounts) => {
     const storedData = await barkChainInstance.honorDog.call();
     assert.equal(
       storedData,
-      { name: 'Nellie', breed: 'Cattle Dog' },
+      ['Nellie', 'Cattle Dog'],
       'The value "Nellie" and "Cattle Dog" was not stored.'
     );
   });
